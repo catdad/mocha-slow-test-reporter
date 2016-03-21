@@ -1,11 +1,19 @@
 {
   "name": "mocha-slow-test-reporter",
   "version": "0.0.1",
-  "description": "",
   "main": "slow-reporter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kiril Vatev <vatev.1@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catdad/mocha-slow-test-reporter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/catdad/mocha-slow-test-reporter/issues"
+  },
+  "homepage": "https://github.com/catdad/mocha-slow-test-reporter#readme",
+  "description": ""
 }
