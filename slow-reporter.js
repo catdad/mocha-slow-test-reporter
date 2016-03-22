@@ -9,6 +9,8 @@ var chalk = require('chalk');
 
 module.exports = SlowReporter;
 
+var SLOW_DEFAULT = 75;
+
 var isatty = tty.isatty(1) && tty.isatty(2);
 
 var window = { width: 75 };
@@ -78,7 +80,7 @@ function SlowReporter(runner, options) {
     }
     
     runner.on('test end', function(test) {
-        onTestComplete(test.duration, test.fullTitle(), test.slow() || 60);
+        onTestComplete(test.duration, test.fullTitle(), test.slow() || SLOW_DEFAULT);
     });
     
     runner.on('end', function () {
