@@ -21,6 +21,10 @@ if (isatty) {
         tty.getWindowSize()[1];
 }
 
+if (process.env.FORCE_TTY_WIDTH && +process.env.FORCE_TTY_WIDTH) {
+    window.width = parseInt(process.env.FORCE_TTY_WIDTH);
+} 
+
 function SlowReporter(runner, options) {
     var slowTests = [];
     
@@ -77,6 +81,10 @@ function SlowReporter(runner, options) {
         });
         
         console.log(table(slowTable, { stringLength: stringLength }));
+        
+        setTimeout(function() {
+            process.exit();
+        }, 0);
     }
     
     runner.on('test end', function(test) {
