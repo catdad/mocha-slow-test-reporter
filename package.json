@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "slow-reporter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha fixtures -R slow-reporter.js"
   },
   "author": "Kiril Vatev <vatev.1@gmail.com>",
   "license": "ISC",
@@ -15,5 +15,15 @@
     "url": "https://github.com/catdad/mocha-slow-test-reporter/issues"
   },
   "homepage": "https://github.com/catdad/mocha-slow-test-reporter#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "lorem-ipsum": "^1.0.3",
+    "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "string-length": "^1.0.1",
+    "text-table": "^0.2.0",
+    "wordwrap": "^1.0.0"
+  }
 }
