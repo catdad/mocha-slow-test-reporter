@@ -20,10 +20,6 @@ if (isatty) {
 }
 
 function SlowReporter(runner, options) {
-    var passes = 0;
-    var failures = 0;
-    var pending = 0;
-    
     var slow = 60;
     var slowTests = [];
     
@@ -37,9 +33,11 @@ function SlowReporter(runner, options) {
     }
     
     function onEnd() {
-        var total = passes + failures + pending;
-        
         console.log(chalk.bold('Slow test count: %s\n'), slowTests.length);
+        
+        if (slowTests.length === 0) {
+            return;
+        }
         
         var sortedSlow = slowTests.sort(function(a, b) {
             return b.duration - a.duration;
@@ -74,8 +72,6 @@ function SlowReporter(runner, options) {
         });
         
         console.log(table(slowTable, { stringLength: stringLength }));
-        
-        process.exit(failures);
     }
     
     runner.on('test end', function(test) {
