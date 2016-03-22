@@ -20,14 +20,20 @@ if (isatty) {
 }
 
 function SlowReporter(runner, options) {
-    var slow = 60;
     var slowTests = [];
     
-    function onTestComplete(duration, title) {
+    var verySlowColor = chalk.red;
+    var slowColor = chalk.yellow;
+    var textColor = chalk.gray;
+    
+    function onTestComplete(duration, title, slow) {
         if (duration > slow) {
             slowTests.push({
                 title: title,
-                duration: duration
+                duration: duration,
+                durText: duration > (slow * 2) ?
+                    verySlowColor(duration + 'ms') : 
+                    slowColor(duration + 'ms')
             });
         }
     }
@@ -51,11 +57,8 @@ function SlowReporter(runner, options) {
             var wrappedTokens = wrappedTitle.split('\n');
             var first = wrappedTokens.shift();
             
-            var durationColor = test.duration > (slow * 2) ? chalk.red : chalk.yellow;
-            var textColor = chalk.gray;
-            
             slowTable.push([
-                durationColor(test.duration + 'ms'),
+                test.durText,
                 textColor(first.trim())
             ]);
             
@@ -75,7 +78,7 @@ function SlowReporter(runner, options) {
     }
     
     runner.on('test end', function(test) {
-        onTestComplete(test.duration, test.fullTitle());
+        onTestComplete(test.duration, test.fullTitle(), test.slow() || 60);
     });
     
     runner.on('end', function () {
