@@ -15,7 +15,7 @@
     "url": "https://github.com/catdad/mocha-slow-test-reporter/issues"
   },
   "homepage": "https://github.com/catdad/mocha-slow-test-reporter#readme",
-  "description": "",
+  "description": "A simple little reporter that detects slow tests in Mocha, and prints a list of the name and time, ordered by slowest first.",
   "devDependencies": {
     "lorem-ipsum": "^1.0.3",
     "mocha": "^2.4.5"
@@ -25,5 +25,10 @@
     "string-length": "^1.0.1",
     "text-table": "^0.2.0",
     "wordwrap": "^1.0.0"
-  }
+  },
+  "keywords": [
+    "mocha",
+    "reporter",
+    "slow"
+  ]
 }
