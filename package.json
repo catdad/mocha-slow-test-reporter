@@ -1,6 +1,6 @@
 {
   "name": "mocha-slow-test-reporter",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "slow-reporter.js",
   "scripts": {
     "test": "mocha fixtures -R slow-reporter.js"
