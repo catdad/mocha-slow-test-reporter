@@ -11,9 +11,7 @@ module.exports = SlowReporter;
 
 var isatty = tty.isatty(1) && tty.isatty(2);
 
-var window = {
-  width: 75
-};
+var window = { width: 75 };
 
 if (isatty) {
     window.width = process.stdout.getWindowSize ?
@@ -41,7 +39,7 @@ function SlowReporter(runner, options) {
     function onEnd() {
         var total = passes + failures + pending;
         
-        console.log('Slow test count: %s\n', slowTests.length);
+        console.log(chalk.bold('Slow test count: %s\n'), slowTests.length);
         
         var sortedSlow = slowTests.sort(function(a, b) {
             return b.duration - a.duration;
@@ -80,21 +78,10 @@ function SlowReporter(runner, options) {
         process.exit(failures);
     }
     
-    runner.on('pass', function (test) {
-        passes++;
-        onTestComplete(test.duration, test.fullTitle());
-    });
-
-    runner.on('fail', function (test, err) {
-        failures++;
+    runner.on('test end', function(test) {
         onTestComplete(test.duration, test.fullTitle());
     });
     
-    runner.on('pending', function(test) {
-        pending++;
-        onTestComplete(test.duration, test.fullTitle());
-    });
-
     runner.on('end', function () {
         onEnd();
     });
