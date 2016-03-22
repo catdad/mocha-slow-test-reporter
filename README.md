@@ -1,5 +1,7 @@
 # mocha-slow-test-reporter
 
+A simple little reporter that detects slow tests in Mocha, and prints a list of the name and time, ordered by slowest first.
+
 ## Install
 
     npm install --save-dev mocha-slow-test-reporter
