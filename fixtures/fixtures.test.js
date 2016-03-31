@@ -13,6 +13,12 @@ describe('[slow tests]', function() {
     });
 });
 
+describe('[debug tests]', function() {
+    it('does a thing', function(done) {
+        process.nextTick(done);
+    });
+});
+
 
 describe('[slow test long name]', function() {
     times.forEach(function(t) {
