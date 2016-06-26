@@ -12,6 +12,16 @@ function longTest(that) {
     that.timeout(6 * 1000);
 }
 
+function testWidth(stdout, width) {
+    var lines = stdout.split('\n');
+
+    var maxWidth = Math.max.apply(Math, lines.map(function(v) {
+        return v.length;
+    }));
+
+    expect(maxWidth).to.be.at.least(width - 10).and.to.be.at.most(width);
+}
+
 describe('[reporter]', function() {
     it('executes and exists correctly', function(done) {
         longTest(this);
@@ -26,6 +36,9 @@ describe('[reporter]', function() {
             expect(stdout).to.be.a('string')
                 .and.to.have.property('length')
                 .and.to.be.at.least(50);
+            
+            // test the default width
+            testWidth(stdout, 75);
             
             done();
         });
@@ -47,13 +60,25 @@ describe('[reporter]', function() {
             expect(err).to.not.be.ok;
             expect(stderr.trim()).to.equal('');
             
-            var lines = stdout.split('\n');
+            testWidth(stdout, W);
             
-            var maxWidth = Math.max.apply(Math, lines.map(function(v) {
-                return v.length;
-            }));
-            
-            expect(maxWidth).to.be.at.least(W - 10).and.to.be.at.most(W);
+            done();
+        });
+    });
+    
+    // this may actually be due to a bug in the reporter or in shellton,
+    // but I can test it more easily here
+    it('exits correctly when piped through stdio in the parent process', function(done) {
+        longTest(this);
+        
+        shellton({
+            task: COMMAND,
+            cwd: CWD,
+            stdout: process.stdout,
+            stderr: process.stderr
+        }, function(err, stdout, stderr) {
+            expect(err).to.not.be.ok;
+            expect(stderr.trim()).to.equal('');
             
             done();
         });
