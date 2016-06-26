@@ -21,7 +21,7 @@
     "chai": "^3.5.0",
     "lorem-ipsum": "^1.0.3",
     "mocha": "^2.4.5",
-    "shellton": "^1.3.2"
+    "shellton": "^2.0.0"
   },
   "dependencies": {
     "chalk": "^1.1.1",
