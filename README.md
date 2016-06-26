@@ -1,10 +1,19 @@
 # mocha-slow-test-reporter
 
-[![Downloads][7]][8] [![Version][9]][8]
+[![Build][1]][2]
+[![Downloads][7]][8]
+[![Version][9]][8]
+[![Dependency Status][10]][11]
+
+[1]: https://travis-ci.org/catdad/mocha-slow-test-reporter.svg?branch=master
+[2]: https://travis-ci.org/catdad/mocha-slow-test-reporter
 
 [7]: https://img.shields.io/npm/dm/mocha-slow-test-reporter.svg
 [8]: https://www.npmjs.com/package/mocha-slow-test-reporter
 [9]: https://img.shields.io/npm/v/mocha-slow-test-reporter.svg
+
+[10]: https://david-dm.org/catdad/mocha-slow-test-reporter.svg
+[11]: https://david-dm.org/catdad/mocha-slow-test-reporter
 
 A simple little reporter that detects slow tests in Mocha, and prints a list of the name and time, ordered by slowest first.
 
