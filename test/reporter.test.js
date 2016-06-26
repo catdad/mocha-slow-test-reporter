@@ -71,6 +71,9 @@ describe('[reporter]', function() {
     it('exits correctly when piped through stdio in the parent process', function(done) {
         longTest(this);
         
+        // add empty line here
+        console.log('');
+        
         shellton({
             task: COMMAND,
             cwd: CWD,
