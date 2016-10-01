@@ -20,7 +20,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "lorem-ipsum": "^1.0.3",
-    "mocha": "^2.4.5",
+    "mocha": "^3.1.0",
     "shellton": "^2.0.0"
   },
   "dependencies": {
